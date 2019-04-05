@@ -1,10 +1,10 @@
-from socket import *
+import socket
 import base64, ssl
 
 # Choose a mail server (e.g. Google mail server) and call it mail server
 mailserver = "smtp.gmail.com"
 # Create socket called client Socket and establish a TCP connection with mail server
-clientSocket = socket(AF_INET, SOCK_STREAM)
+clientSocket = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
 clientSocket = ssl.wrap_socket(clientSocket)
 print('====================================')
 print('Establishing connection...')
@@ -53,7 +53,7 @@ print('Server: ', recv)
 ################################
 # Send MAIL FROM command and print server response.
 ################################
-mailFrom = 'baronbrill@gmail.com'
+mailFrom = username
 
 mailFromCommand = 'MAIL FROM:<' + mailFrom + '>\r\n'
 print('====================================')
@@ -65,7 +65,7 @@ print('Server: ', recv)
 ################################
 # Send RCPT TO command and print server response.
 ################################
-rcptTo = 'baronbrill@gmail.com'
+rcptTo = input("Who would you like to send this email to? ")
 
 rcptToCommand = 'RCPT TO:<' + rcptTo + '>\r\n'
 print('====================================')
